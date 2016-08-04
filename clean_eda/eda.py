@@ -1,28 +1,28 @@
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import seaborn as sns
+
 import matplotlib.patches as mpatches
 import matplotlib.cbook as cbook
 
-wines = pd.read_json('./data/master_wines.json')
+wines = pd.read_json('../data/master_wines.json')
 
 grapes = wines.Grape.value_counts()
 top_grapes = grapes[:10]
 top_grapes = dict(top_grapes)
 
-fig, ax = plt.subplots()
-my_colors = 'rgbkymc'
-ax.bar(range(len(top_grapes), top_grapes.values(), align='center', color=my_colors, alpha=0.5, label=top_grapes.keys())
-#ax.xticks(range(len(top_grapes)), list(top_grapes.keys()), rotation=45)
-plt.xlabel('Grape Varietal')
-plt.title('Top Ten Grapes Found in Reviews')
-plt.ylabel('Number of Reviews')
-ax.legend()
-ax.grid(True)
+# fig, ax = plt.subplots()
+# my_colors = 'rgbkymc'
+# ax.bar(range(len(top_grapes), top_grapes.values(), align='center', color=my_colors, alpha=0.5, label=top_grapes.keys())
+# #ax.xticks(range(len(top_grapes)), list(top_grapes.keys()), rotation=45)
+# plt.xlabel('Grape Varietal')
+# plt.title('Top Ten Grapes Found in Reviews')
+# plt.ylabel('Number of Reviews')
+# ax.legend()
+# ax.grid(True)
+# plot.legend(loc=2,prop={'size':6})
+# fig.tight_layout()
 
-fig.tight_layout()
-#fig.savefig('test.png')
 
 gvalues = top_grapes.values()
 labels = top_grapes.keys()
@@ -59,12 +59,13 @@ ax.set_ylim(bottom=0)
 ax.patch.set_facecolor('0.9')
 ax.grid(color='white', linestyle='-')
 ax.set(axisbelow=True, xticklabels=[])
-plt.title('Top Ten Grapes Found in Reviews')
-plt.ylabel('Number of Reviews')
+plt.title('Top Ten Grapes Found in Reviews', fontsize = 16)
+plt.ylabel('Number of Reviews', fontsize = 14)
+plt.legend(loc='best' ,prop={'size':12})
 
 
-
-reviews = pd.read_json('./data/clean_reviews.json')
+'''
+reviews = pd.read_json('../data/clean_reviews.json')
 scores = reviews.score.value_counts()
 scores = dict(scores)
 num_ratings = scores.values()
@@ -73,19 +74,15 @@ scores = scores.keys()
 df2 = pd.DataFrame({'scores': scores,
                    'Number_of_Reviews': num_ratings})
 df2 = df2.sort(['scores'], ascending=[1])
-#df2 = df2.set_index('scores')
-#df2 = df2.ix[70:]
+df2 = df2.set_index('scores')
+df2 = df2.ix[75:]
 
-ax = df2[['Number_of_Reviews']].plot(kind='bar', title ="Score Frequency",figsize=(15,10),legend=True, fontsize=12, color='#FF6347', alpha = 0.8)
-ax.grid(color='white', linestyle='-')
-plt.ylabel('Number of Reviews')
-plt.xlabel('Score Given')
+ax = df2[['Number_of_Reviews']].plot(kind='bar',figsize=(15,10),legend=True, fontsize=24, color='#701112', alpha = 0.9)
+#ax.grid(color='white', linestyle='-')
+plt.title('Score Distribution', fontsize = 24)
+plt.ylabel('Number of Reviews', fontsize = 18)
+plt.xlabel('Score Given', fontsize = 14)
 
 
-df3 = pd.DataFrame()
-count = 1
-for review in xrange(reviews.shape[0]):
-    if reviews.loc[review, 'wine_name'] == '2000 Domaine du Pégaü Châteauneuf-du-Pape Cuvée Réservée'.decode('utf-8'):
-        print "Found number: ", count
-        count += 1
-        df3 = df3.append(reviews.loc[review])
+
+'''

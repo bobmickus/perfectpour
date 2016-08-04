@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import os
 
 
@@ -7,7 +8,7 @@ if __name__ == "__main__":
 
     master = pd.DataFrame()
 
-    path = './data/user_reviews/'
+    path = '../data/json_reviews/'
     paths = [path + f_name for f_name in os.listdir(path) if f_name != '.DS_Store']
     #read all data files into one Pandas DataFrame
     i = 0
@@ -34,6 +35,12 @@ if __name__ == "__main__":
 
 
 '''
+
+master['score'] = master['score'].convert_objects(convert_numeric=True)
+master = master[np.isfinite(master['score'])]
+
+
+master['score'] = master['score'].dropna().apply(lambda x: str(int(x)) )
 
 for review_num in xrange(reviews2.shape[0]):
     if reviews2[reviews2['wine_id'].str.contains('WS')]:

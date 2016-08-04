@@ -4,7 +4,7 @@ import numpy as np
 import requests
 import os
 import re
-import api_keys.py as key
+import api_keys as key
 
 
 
@@ -99,14 +99,14 @@ if __name__ == "__main__":
             wine_name = name[5:]
             check_name = wine_name + ' ' + year
 
-            payload['Xkey'] = 'key.xkey'
+            payload['Xkey'] = 'bbmickus'
             payload['Xkeyword_mode'] = 'X'
             payload['Xformat'] = 'J'
             payload['Xscore'] = 'Y'
             payload['Xwinename'] = wine_name
             payload['Xvintage'] = year
             print "Trying wine-searcher site...call number: ", i+1
-            if i > 1500:
+            if i > 1400:
                 break
             content = query(url, payload)
             content = str(content)

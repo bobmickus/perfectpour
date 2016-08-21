@@ -1,5 +1,5 @@
 # The Perfect Pour  
-![Image of a wine glass with red wine being poured into it.](https://github.com/bobmickus/perfectpour/wine_pour.jpg)
+![Image of a wine glass with red wine being poured into it.](https://github.com/bobmickus/perfectpour/blob/master/wine_pour.jpg)
 
 A Python-based wine recommender system that web scrapes user ratings on wines and combines it with wine attributes to determine latent features. Numerous matrix factorization models were created and evaluated using the GraphLab Create machine learning framework.
 

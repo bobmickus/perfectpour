@@ -1,7 +1,6 @@
 # The Perfect Pour
 
-
-<IMG SRC="wine_pour.jpg” ALIGN=”right” HSPACE=”5” VSPACE=”5”> 
+<img align="right" src="wine_pour.jpg">
 
 
 A Python-based wine recommender system that web scrapes user ratings on wines and combines it with wine attributes to determine latent features. Numerous matrix factorization models were created and evaluated using the GraphLab Create machine learning framework.

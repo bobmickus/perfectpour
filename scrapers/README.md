@@ -1,7 +1,9 @@
-# The Perfect Pour
+# Data Pipeline - Phase One:  Data Acquisition
 
-<img align="right" src="wine_pour.jpg">
+<img align="center" src="Data_Pipeline.jpg">
 
+
+The first phase of the data ingestion pipeline consisted of obtaining the needed data through the process of both web scraping and through direct API calls to http based resources.
 
 A Python-based wine recommender system that web scrapes user ratings on wines and combines it with wine attributes to determine latent features. Numerous matrix factorization models were created and evaluated using the GraphLab Create machine learning framework.
 

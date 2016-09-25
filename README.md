@@ -3,9 +3,9 @@
 <img align="right" src="wine_pour.jpg">
 
 
-A Python-based wine recommender system that web scrapes user ratings on wines and combines it with wine attributes to determine latent features. Numerous matrix factorization models were created and evaluated using the GraphLab Create machine learning framework.
+A Python-based wine recommender system that uses 3 different data sources to obtain user ratings on wines (i.e. scores and comments) along with wine attribute data (such as wine name, vintage, primary grape varietal, region/appellation and price. Different ML recommendation engines were generated through the use of item-user similarity models and numerous matrix factorization models. The models were built and evaluated by using the GraphLab Create machine learning framework.
 
-Phase Two of the project will involve enhancing the recommender through the use of the Watson Alchemy Sentiment Analysis API to extract text comments from the user wine reviews and perform sentiment analysis.
+Phase Two of the project will involve enhancing the recommender through the use of Google's Natural Language APIs to extract text comments from the user wine reviews and perform sentiment analysis.  The hope is that this will further enhance the quality of the recommendations.
 
 ## Repo Directories:
 

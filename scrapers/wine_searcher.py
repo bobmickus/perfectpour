@@ -226,8 +226,6 @@ if __name__ == "__main__":
 
 '''
 
-
-
 Review Columns = 'notes', u'review_date', u'score', u'user_id', u'wine_id',
        u'wine_name']
 Wines Columns = [u'CurrentReviews', u'Grape', u'Id', u'Location', u'Name', u'PriceMax',

@@ -1,3 +1,15 @@
+"""
+The purpose of the script is to scrape data from the Cellar Tracker website. The script uses the Selenium scraping library and a Tor proxy service.
+The scraping process collects the following data each user review that it scrapes:
+- user_id
+- review_date
+- wine_id
+- wine_name
+- score
+- notes
+
+"""
+
 from selenium import webdriver
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
@@ -78,9 +90,9 @@ def renew_connection():
 def browser_connect(driver, url):
     """
     Input: webdriver object, url to be visited
-    10 second conditional delay to wait for full page load
+    15 second conditional delay to wait for full page load
     Returns: webdriver object after it has visited the page.
-    Customized to looks for bncollege page footers
+
     """
     driver.get(url)
     TimeoutException = False
@@ -94,6 +106,12 @@ def browser_connect(driver, url):
     return driver
 
 def check_captcha(element, driver):
+    """
+    Input: html content from initial page load.
+    Checks to see if the page is dispalying captcha test "Are you human".  If found the function will renew the connection and check the page again to see if captcha block is still present.  Process will be repeated until the renewed connection does not contain captcha block.
+    Returns: refreshed page without captcha.
+
+    """
     print "checking for captcha!"
     text = str(element.text)
     captcha = "Are you human"
@@ -114,6 +132,13 @@ def check_captcha(element, driver):
                 status = False
 
 def process_rows(driver, all_rows):
+    """
+    Input: html content for all of the rows from the user reviews that appear on a given page.
+    Each row is processed to extract the relevant data through the use of regular expressions. Extracted values are placed into a pandas dataframe with the correspionding columns per rewview.
+
+    Returns: dataframe containing data for each reviewed wine.
+
+    """
     reviews = []
     df = pd.DataFrame()
     print "Made it to process rows!  Length of allrows is:", len(all_rows)
@@ -189,6 +214,14 @@ def process_rows(driver, all_rows):
     return df
 
 def process_user(user, tracking_list):
+    """
+    Input: user number and tracking list of users that are skipped (which occurs if they have more than 100 reviews)
+
+    Each row is processed to extract the relevant data through the use of regular expressions. Extracted values of the needed attributes are loaded into a pandas dataframe.
+
+    Returns: dataframe containing data for each reviewed wine.
+    """
+
     print "Made it to process user."
     base_url = 'https://www.cellartracker.com/list.asp?Table=Notes'
     all_rows = []
@@ -298,6 +331,3 @@ if __name__ == "__main__":
         file_name = 'user_reviews' + un + '.json'
         df2.to_json(file_name)
         print 'Number of records in master dataframe: ', len(df2)
-
-    #finally:
-    #driver.quit()

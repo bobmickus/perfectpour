@@ -5,16 +5,11 @@ import json
 # from pymongo.errors import DuplicateKeyError, CollectionInvalid
 # import datetime as dt
 
+# Optional:  use MongoDB to store data
 # Define the MongoDB database and table
 # db_client = MongoClient()
 # db = db_client['winedotcom']
 # table = db['wine']
-
-
-
-#url to access red wines
-#http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(490+124)&offset=100&size=5&apikey=81f9f30bf15a4a3c3b2fdc683b2f2ed5
-
 
 # Query the wine.com API once
 def query(url, payload):
@@ -27,18 +22,16 @@ def query(url, payload):
 
 
 if __name__ == "__main__":
+
+    #url to access red wines
+    #http://services.wine.com/api/beta2/service.svc/json/catalog?filter=categories(490+124)&offset=100&size=5&apikey=81f9f30bf15a4a3c3b2fdc683b2f2ed5
+
     url = 'http://services.wine.com/api/beta2/service.svc/json/catalog'
     url2 = 'http://services.wine.com/api/beta2/service.svc/format/categorymap'
 
     payload = { 'apikey': '81f9f30bf15a4a3c3b2fdc683b2f2ed5'}
-    #specify which wine category to query
-    payload['search'] = '1992+Optima+Cabernet+Sauvignon+Alexander+Valley'
 
-    content = query(url, payload)
-
-
-    '''
-    code for downloading white wines from wine.com:
+    #payload['search'] = '1992+Optima+Cabernet+Sauvignon+Alexander+Valley'
 
     start_record = 0
     for iter in range(0,500):
@@ -52,6 +45,3 @@ if __name__ == "__main__":
         with open('./data/white_wines/white_wine_data'+str(iter)+'.json', 'w') as f:
             json.dump(wines, f)
         start_record += 100
-
-
-    '''

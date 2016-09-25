@@ -3,24 +3,12 @@
 <img align="center" src="Data_Pipeline.jpg">
 
 
-The first phase of the data ingestion pipeline consisted of obtaining the needed data through the process of both web scraping and through direct API calls to http based resources.
+The first phase of the data ingestion pipeline consisted of obtaining the needed data through the process of both web scraping and through direct API calls to http based resources.  This was performed through various Python scripts.
 
-A Python-based wine recommender system that web scrapes user ratings on wines and combines it with wine attributes to determine latent features. Numerous matrix factorization models were created and evaluated using the GraphLab Create machine learning framework.
+The data sources were three public web-sites:
 
-Phase Two of the project will involve enhancing the recommender through the use of the Watson Alchemy Sentiment Analysis API to extract text comments from the user wine reviews and perform sentiment analysis.
+1. <b>Cellar Tracker:</b> <br>Data obtained:  user reviews on wines (both the score, if available, and any comments about the wine.<br>Methods used:  web-scraping using Selenium, Tor and pandas.<br>Script used:  selenium_ct.py
 
-## Repo Directories:
+2. <b>wine.com:</b> <br>Data obtained: wine data on over 70,000 wines.<br>Methods used:  REST API calls.<br>Script used:  winescrape.py.py
 
-1. <b>scrapers:</b> <br>contains the different scripts that were used for scraping the target web-sites. Primary tools used included:  Selenium, Tor and Beautiful Soup.
-
-2. <b>clean_eda:</b> <br>contains scripts used for data cleaning and analysis.  Primary tools used included:  Pandas, Regex and Matplotlib.
-
-3. <b>recommenders:</b> <br>contains scripts used for generating the different recommendation models. Primary tools used included:  GraphLab Create.
-
-4. <b>sentiment_analysis:</b> <br>contains scripts used for performing sentiment analysis. Primary tools used included:  Watson Alchemy Sentiment Analysis API.
-
-
-
-
-## Project Presentation
-The Perfect Pour Overview PDF file contains charts that provide a short overview of the project.
+3. <b>wine-searcher.com:</b> <br>Data obtained:  prices on the wines.<br>Methods used:  REST API calls.<br>Script used:  wine_searcher.py
